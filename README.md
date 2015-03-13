@@ -1,4 +1,5 @@
-#TOPletter bundle version 1.00 of 2015/03/13  
+#TOPletter class 
+##version 0.2 of 2015/03/13  
 Copyright 2015 Marco Torchiano  
 Apache License 2.0 
 
