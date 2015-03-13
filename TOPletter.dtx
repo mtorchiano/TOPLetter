@@ -1,0 +1,465 @@
+% \iffalse meta-comment
+%
+%  Copyright (C) 2015 by Marco Torchiano <marco.torchiano@polito.it>
+% ------------------------------------------------------------------
+% 
+% This file may be distributed and/or modified under the conditions of
+% the Apache License, either version 2.0 of this license
+% or (at your option) any later version.  The latest version of this
+% license is in:
+% 
+%    http://choosealicense.com/licenses/apache-2.0/
+%
+% \fi
+%
+% \iffalse
+%<*driver>
+\ProvidesFile{TOPletter.dtx}
+%</driver>
+%<class>\NeedsTeXFormat{LaTeX2e}
+%<class>\ProvidesClass{TOPletter}
+%<*class>
+    [2015/03/13 v.2 Corporate Letter PoliTo LaTeX class]
+%</class>
+%
+%<*driver>
+\documentclass{ltxdoc}
+\usepackage{hyperref}
+\usepackage{mdframed}
+\EnableCrossrefs         
+%\CodelineIndex
+\PageIndex
+\RecordChanges
+\OnlyDescription
+\begin{document}
+  \DocInput{TOPletter.dtx}
+\end{document}
+%</driver>
+% \fi
+%
+% \CheckSum{0}
+% \CheckSum{292}
+%
+% \CharacterTable
+%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
+%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
+%   Digits        \0\1\2\3\4\5\6\7\8\9
+%   Exclamation   \!     Double quote  \"     Hash (number) \#
+%   Dollar        \$     Percent       \%     Ampersand     \&
+%   Acute accent  \'     Left paren    \(     Right paren   \)
+%   Asterisk      \*     Plus          \+     Comma         \,
+%   Minus         \-     Point         \.     Solidus       \/
+%   Colon         \:     Semicolon     \;     Less than     \<
+%   Equals        \=     Greater than  \>     Question mark \?
+%   Commercial at \@     Left bracket  \[     Backslash     \\
+%   Right bracket \]     Circumflex    \^     Underscore    \_
+%   Grave accent  \`     Left brace    \{     Vertical bar  \|
+%   Right brace   \}     Tilde         \~}
+%
+%
+% \changes{v1.0}{2015/03/13}{Initial version}
+%
+% \GetFileInfo{TOPletter.dtx}
+%
+% \DoNotIndex{\newcommand,\newenvironment,\\, \bf,\begin, \cond, \condb}
+% \DoNotIndex{\centering,\ClassError,\DeclareOption,\def,\definecolor}
+% \DoNotIndex{\else,\end,\familydefault,\fancyfoot,\fancyhead,\fancyhf}
+% \DoNotIndex{\fancypagestyle,\fi,\fontseries,\fontsize,\footrulewidth}
+% \DoNotIndex{\footskip,\headheight,\headrulewidth,\href,\hspace}
+% \DoNotIndex{\ifdefined,\IfFileExists,\IfLanguageName,\includegraphics}
+% \DoNotIndex{\Large,\linebreak,\LoadClass,\makeatletter,\makeatother}
+% \DoNotIndex{\makebox,\MessageBreak,\pagestyle,\parbox,\ProcessOption}
+% \DoNotIndex{\protect,\raisebox,\relax,\renewcommand,\RequirePacakge}
+% \DoNotIndex{\rule,\selectfont,\setlength,\sfdefault,\sffamily,\small}
+% \DoNotIndex{\textwidth,\today,\topl@language,\toplData,\toplDest}
+% \DoNotIndex{\toplEmail,\toplFax,\toplHome,\toplLuogo,\toplLogo}
+% \DoNotIndex{\toplNome,\toplRuolo,\toplSignature,\toplStruttura}
+% \DoNotIndex{\toplSubject,\toplSubjectLabel,\toplTelefono}
+% \DoNotIndex{\toplTipoStruttura,\vspace,\color,\RequirePackage}
+%
+% \title{The \textsf{TOPletter} class\thanks{This document
+%   corresponds to \textsf{TOPLetter}~\fileversion, dated \filedate.}}
+% \author{Marco Torchiano \\ \texttt{marco.torchiano@polito.it}}
+%
+% \maketitle
+%
+% \section{Introduction}
+%
+% The \textsf{TOPletter} class provides the basic functions needed for typesetting 
+% a letter using LaTeX and conforming to the official Corporate Image guidelines for
+% Politecnico di Torino~\footnote{
+% \url{http://www.politocomunica.polito.it/corporate_image/marchio_e_identita_visiva}}. 
+% The class can be used for letters written both in Italian and in English languages.
+%
+%
+%
+% \section{Usage}
+%
+% The usage of the document class is extremely straightforward:
+% \begin{itemize}
+% \item the TOPletter document class must be declared as the base for
+% the document. i.e. using |\documentclass{TOPletterA}|.
+%
+% \item the customization macros must be used to define the
+%       details of the letter, i.e. organization details, personal
+%		information, and letter subject.
+%
+% \item the body of the letter can be written as a regular \LaTeX document.
+% \end{itemize}
+% An example of a document using the \textsf{TOPletter} class is provided
+% in section \ref{sec:example} below.
+%
+%
+% \subsection{Organizational Unit}
+% 
+% \DescribeMacro{\dipartimentoDi}\noindent
+% The name of the department can be specified using the 
+% |\dipartimentoDi|\marg{department name} macro.
+% 
+% \noindent\DescribeMacro{\struttura}
+% By default the organizational unit is a {\em department}, but
+% it is possible to set the type of the organizational unit using
+% |\struttura|\marg{structure type} macro.
+% 
+% \subsection{Personal Info}
+% 
+% \noindent\DescribeMacro{\nome}
+% |\nome|\marg{name and surname}
+% Defines the name of the person, it should include both first and
+% last names as they will appear in the header of the letter and 
+% at the end of the letter (after the date).
+% 
+% \noindent\DescribeMacro{\ruolo}
+% |\ruolo|\marg{role}
+% defines the role of the person, e.g. {\em Full Professor}.
+% 
+% \noindent\DescribeMacro{\telefono}
+% |\telefono|\marg{phone number}
+% defines the office phone number.
+% 
+% \noindent\DescribeMacro{\email}
+% |\email|\marg{email}
+% defines the email address of the person
+% 
+% The above information is mandatory and an error is reported
+% if any is missing.
+%
+% \noindent\DescribeMacro{\homepage}
+% |\homepage|\marg{url}
+% defines the (optional) URL of the personal home page.
+% 
+% \noindent\DescribeMacro{\fax}
+% |\fax|\marg{fax}
+% defines the (optional) fax number.
+% 
+% \noindent\DescribeMacro{\firma}
+% |\firma|\marg{image file}
+% defines an image file (typically a PNG) that contains a scanned signature of the person.
+%
+% \subsection{Letter Details}
+% 
+% \noindent\DescribeMacro{\soggetto}
+% |\soggetto|\marg{subject}
+% defines the subject of the letter, that will appear, at the top of the letter
+% preceded by the word "{\em Subject:}" (or "{\em Soggetto:}" if the language is italian).
+%
+% The above macro is the only mandatory for the letter details.
+%
+% \noindent\DescribeMacro{\destinatario}
+% |\destinatario|\marg{recipient}
+% defines the recipient of the letter, if no recipient is provided the 
+% letter will be addressed to "{\em To whom it may concern}"
+% (or "{\em A chi di competenza}" if the languaga is italian).
+% 
+% \noindent\DescribeMacro{\luogo}
+% |\luogo|\marg{place}
+% defines the place that accompanies the date, it is by default "{\em Torino}" 
+% 
+% \noindent\DescribeMacro{\data}
+% |\data|\marg{date}
+% defines a date to be used at the bottom of the letter instead of the current date.
+% 
+% \noindent\DescribeMacro{\esoggetto}
+% |\esoggetto|\marg{label}
+% changes the word that precedes the subject topic, replaces the defauult "{\em Subject:}", .
+%
+% \subsection{Logo}
+% 
+% \noindent\DescribeMacro{\logo}
+% |\logo|\marg{image file}
+% defines the image file containing the logo used in the header of the letter.
+% The logo must be square with at least 400x400 pixel resolution.
+% The default is the Politecnico di Torino logo.
+%
+% \subsection{Language}
+% The document language can be specified as either |italian| or |english|
+% as class parameter e.g. as |\documentclass[italian]{TOPletterA}|.
+% The default language is |italian|.
+%
+% The language can be detected using the |\IfLanguageName| macro to adapt the
+% document contents to the specific language. This can be useful if a template
+% file is used for both languages, for instance if we want to adapt the OU type
+% and name according to the language we can add in the tex file the following:
+%
+% \begin{verbatim}
+% \IfLanguageName{italian}{ %% department italian name:
+%   \dipartimentoDi{Automatica e Informatica}
+% }{%% department english name:
+%   \dipartimentoDi{Control and Computer Engineering}
+% }
+% \end{verbatim}
+% Automatically, based on the document language (defined as documentclass parameter),
+% the correct naming for the department will be used.
+%
+%
+%
+% \section{Example}
+% \label{sec:example}
+% This section reports a very basic example of a short template used for writing a
+% bilingual letter.
+% \begin{mdframed}
+% \begin{verbatim}
+% \documentclass[english]{TOPletter}
+% %% Load any additional package
+% \usepackage{lipsum}
+% 
+% \IfLanguageName{italian}{ %% italian names
+%   \dipartimentoDi{Automatica e Informatica}
+%   \ruolo{Professore Associato}
+% }{%% OR english version
+%   \dipartimentoDi{Control and Computer Engineering}
+%   \ruolo{Associate Professor}
+% }
+%
+% %% personal details
+% \nome{Marco TORCHIANO}
+% \telefono{+39 011 564 7088}
+% \fax{+39 011 564 7099}
+% \email{marco.torchiano.polito.it}
+% \homepage{http://softeng.polito.it/torchiano/}
+%
+% %% Subject
+% \soggetto{Sample letter}
+%
+% \begin{document}
+% %% Letter content
+% This is the typical appearance of a PoliTo letter.
+%
+% \lipsum
+% \end{document}
+% \end{verbatim}
+% \end{mdframed}
+%
+%
+% \StopEventually{\PrintChanges\PrintIndex}
+%
+% \iffalse
+%<*class>
+% \fi
+% \section{Implementation}
+%
+% This class is based on the standard class article, it uses an A4 paper
+% format since it is the standard in EU, the default font size is set to 11pt.
+%    \begin{macrocode}
+\LoadClass[a4paper,11pt]{article}
+%    \end{macrocode}
+% The class is designe to work with two languages |italian| and |english|.
+%
+%    \begin{macrocode}
+\def\topl@language{main=italian,english}
+\DeclareOption{italian}{\def\topl@language{main=italian,english}}
+\DeclareOption{english}{\def\topl@language{main=english,italian}}
+\ProcessOptions\relax
+%    \end{macrocode}
+%
+% \subsection{Used packages}
+%    \begin{macrocode}
+\RequirePackage[a4paper,bottom=8cm,top=2cm,left=2cm,right=2cm]{geometry}
+\RequirePackage{graphicx}
+\RequirePackage{color}
+\RequirePackage{helvet}
+\RequirePackage{changepage}
+\RequirePackage{setspace}
+\RequirePackage{fancyhdr}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage{hyperref}
+\RequirePackage[\topl@language]{babel}
+\RequirePackage{iflang}
+%    \end{macrocode}
+%
+% \subsection{Colors}
+% Offical PoliTo colors defined in the Corporate Image Guidelines.
+% 
+%    \begin{macrocode}
+\definecolor{orange}{cmyk}{0,.70,1.00,0} %C0/M70/Y100/K0
+\definecolor{blue}{cmyk}{1.00,.80,0,.30} %C100/M80/Y0/K30
+%    \end{macrocode}
+% and we define accordingly the font faces and colors and a few
+% macros to set text color quickly.
+%
+%    \begin{macrocode}
+\renewcommand*\familydefault{\sfdefault}
+\newcommand{\cond}[1]{\fontseries{mc}\selectfont {#1}}
+\newcommand{\condb}[1]{\fontseries{bc}\selectfont {#1}}
+\newcommand{\orange}[1]{\color{orange}{#1}}
+\newcommand{\blue}[1]{\color{blue}{#1}}
+\newcommand{\red}[1]{\color{red}{#1}}
+%    \end{macrocode}
+% \subsection{Headers and footer}
+% Define the height of the head and the extra space at the bottom of the page:
+%    \begin{macrocode}
+\setlength{\headheight}{4.1cm}
+\setlength{\footskip}{2cm}
+%    \end{macrocode}
+% The header part of the logo is define using the |fancyhdr| package.
+%    \begin{macrocode}
+\fancypagestyle{plain}{
+\fancyhf{} % empty plus
+%    \end{macrocode}
+% The header contains only the left part, and it is equal on both
+% even and odd pages. In particular it contains the square logo
+% followed by the name of the department.
+%    \begin{macrocode}
+\fancyhead[LE,LO]{
+\makebox[2.15cm]{\includegraphics[width=2cm,height=2cm]{\toplLogo}}
+{\color{blue}\rule{0.4pt}{2cm}}
+\hspace{1pt}
+\parbox[b]{5cm}{
+\condb{\fontsize{10.5pt}{10pt}\selectfont 
+{\blue POLITECNICO\linebreak
+	   \raisebox{3pt}{DI TORINO}}}\\
+{\fontsize{7.5pt}{6pt}\selectfont \cond {\blue{%
+\raisebox{-14pt}{\toplTipoStruttura}\\ \toplStruttura{} }}}%
+}\\
+%    \end{macrocode}
+% After that we have the name and role of the person writing the letter
+%    \begin{macrocode}
+{\sffamily \small 
+\vspace{0.8cm}
+\hspace{2.5cm}\color{blue}{\cond{\toplRuolo{}}}\\
+\hspace{2.5cm}\color{orange}{\condb{\toplNome{}}}}}
+%    \end{macrocode}
+% The footer is the same on odd and even pages and contains a reference to
+% the structure and the address
+%    \begin{macrocode}
+\fancyfoot[LE,LO]{\small \cond{\color{blue}{{\bf \toplTipoStruttura \toplStruttura}\\
+Politecnico di Torino - Corso Duca degli Abruzzi 24 - 10129 Torino - Italia\\
+tel:\toplTelefono{} \ifdefined\toplFax\hspace{4pt} fax:\toplFax\fi} \\
+\color{orange}{\href{mailto:\toplEmail}{\toplEmail}\hspace{4pt}%
+ \ifdefined\toplHome\href{\toplHome}{\toplHome}%
+ \fi \hspace{4pt} \href{http://www.polito.it}{http://www.polito.it}}}}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+}
+\pagestyle{plain}
+%    \end{macrocode}
+% \subsection{Language specific issues}
+% The name of the structure is different in english and in italian,
+% the two default version -- i.e. Dipartimento and Department -- are 
+% predefined depending on the language:
+%    \begin{macrocode}
+\IfLanguageName{italian}{
+	\newcommand{\toplTipoStruttura}{Dipartimento di }
+	\newcommand{\toplDest}{A chi di competenza}
+	\newcommand{\toplSubjectLabel}{Subject}
+}{
+	\newcommand{\toplTipoStruttura}{Department of }
+	\newcommand{\toplDest}{To whom it may concern}
+	\newcommand{\toplSubjectLabel}{Subject}
+}
+%    \end{macrocode}
+% \subsection{Letter customization parameters}
+% There are several parameters that can be used to customize the letter:
+%    \begin{macrocode}
+\newcommand{\dipartimentoDi}[1]{\def\toplStruttura{#1}}
+\newcommand{\struttura}[1]{\def\toplTipoStruttura{#1}}
+\newcommand{\ruolo}[1]{\makeatletter\def\toplRuolo{#1}\makeatother}
+\newcommand{\nome}[1]{\makeatletter\def\toplNome{#1}\makeatother}
+\newcommand{\telefono}[1]{\makeatletter\def\toplTelefono{#1}\makeatother}
+\newcommand{\fax}[1]{\makeatletter\def\toplFax{#1}\makeatother}
+\newcommand{\email}[1]{\makeatletter\def\toplEmail{#1}\makeatother}
+\newcommand{\homepage}[1]{\def\toplHome{#1}}
+\newcommand{\soggetto}[1]{\def\toplSubject{#1}}
+\newcommand{\esoggetto}[1]{\def\toplSubjectLabel{#1}}
+\newcommand{\destinatario}[1]{\def\toplDest{#1}}
+\newcommand{\firma}[1]{\def\toplSignature{#1}}
+\newcommand{\logo}[1]{\def\toplLogo{#1}}
+\newcommand{\luogo}[1]{\def\toplLuogo{#1}}
+\newcommand{\data}[1]{\def\toplData{#1}}
+\def\toplLogo{LogoPolitoBlu.pdf}
+\def\toplLuogo{Torino}
+\def\toplData{\today}
+%    \end{macrocode}
+% \subsection{Checks}
+% Several checks of completeness are performed at the beginning of the document.
+%    \begin{macrocode}
+\AtBeginDocument{
+\ifdefined\toplEmail \else
+\ClassError{TOPLetter} {Manca l'email}
+{L'email deve essere definito con \protect\email{}.}
+\fi
+\ifdefined\toplTelefono \else
+\ClassError{TOPLetter} {Manca il numero di telefono}
+{Il numero di telefono deve essere definito con \protect\telefono{}.}
+\fi
+\ifdefined\toplNome \else
+\ClassError{TOPLetter} {Manca il nome}
+{Il nome della persona deve essere definito con \protect\nome{}.}
+\fi
+\ifdefined\toplRuolo \else
+\ClassError{TOPLetter} {Manca il ruolo}
+{Il ruolo deve essere definito con \protect\ruolo{}.}
+\fi
+\ifdefined\toplStruttura \else
+\ClassError{TOPLetter} {Manca il nome della struttura}
+{Il nome della struttura deve essere definito con \protect\struttura{}.}
+\fi
+\IfFileExists{\toplLogo} {} 
+{
+\ClassError{TOPLetter} {Il file di logo '\toplLogo' non e' stato trovato.}
+{Il file deve avere come nome 'PoliLogoBlu.png' oppure essere definito
+tramite il comando \protect\logo{}.\MessageBreak
+Il file deve essere quadrato e con risoluzione sufficiente,
+almeno 400x400 pixel.
+}
+}
+%    \end{macrocode}
+% \subsection{Begin of the letter}
+% The initial part of the letter includes the recipient of  the letter
+%    \begin{macrocode}
+\begin{adjustwidth}{10cm}{}
+	\toplDest
+\end{adjustwidth}
+\vspace{1cm}
+%    \end{macrocode}
+% After the recicpient the subject of the letter is specified
+%    \begin{macrocode}
+\ifdefined\toplSubject
+\begin{center}
+{\Large {\bf \toplSubjectLabel: \toplSubject }}
+\end{center}
+\fi
+}
+%    \end{macrocode}
+% \subsection{End of the letter}
+% at the end of the letter we have the place and date, followed by the signature,
+% if defined.
+%    \begin{macrocode}
+\AtEndDocument{
+\vspace{2cm}
+\hspace{.6\textwidth}
+\parbox{5cm}{
+\centering
+\toplLuogo, \toplData\\
+\toplNome\\
+\ifdefined\toplSignature
+	\includegraphics[width=4cm]{\toplSignature}
+\fi
+}
+}
+%    \end{macrocode}
+%% \iffalse
+%</class>
+% \fi
+% \Finale
+\endinput

@@ -1,0 +1,28 @@
+\documentclass[english]{TOPletterA}
+%% Load any additional package
+\usepackage{lipsum}
+
+\IfLanguageName{italian}{ %% italian names
+  \dipartimentoDi{Automatica e Informatica}
+  \ruolo{Professore Associato}
+}{%% english names
+  \dipartimentoDi{Control and Computer Engineering}
+  \ruolo{Associate Professor}
+}
+
+%% personal details
+\nome{Marco TORCHIANO}
+\telefono{+39 011 564 7088}
+\fax{+39 011 564 7099}
+\email{marco.torchiano.polito.it}
+\homepage{http://softeng.polito.it/torchiano/}
+
+%% Subject
+\soggetto{Sample letter}
+
+\begin{document}
+%% Letter content
+This is the typical appearance of a PoliTo letter.
+
+\lipsum
+\end{document}

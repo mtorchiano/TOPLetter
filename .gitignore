@@ -1,0 +1,5 @@
+
+latex/*
+source/*
+test/*
+*.cls
