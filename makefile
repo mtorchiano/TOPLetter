@@ -6,6 +6,10 @@ all: docs class examples
 EXAMPLES=EsempioLettera.pdf ExampleLetter.tex
 TEMPS=*.aux *.log *.glo *.idx *.ilg *.gls *.out *.ind
 TS=$(shell date +'%Y%m%d%H%M')
+VLINE:=$(shell grep " \[" *.dtx)
+VERSION=$(filter v%,$(VLINE))
+DEPLOYED=*.pdf *.dtx *.ins *.tex LICENSE README.md
+RELFILE=TOPletter_$(VERSION)_$(TS).zip
 
 docs: TOPletter.dtx
 	pdflatex TOPletter.dtx
@@ -25,7 +29,7 @@ examples: EsempioLettera.pdf ExampleLetter.pdf
 	rm -rf $(TEMPS)
 
 release: docs examples
-	zip releases/TOPletter_v_$(TS) *.pdf *.dtx *.ins *.tex LICENSE README.md
+	zip releases/$(RELFILE) $(DEPLOYED)
 
 clean:
 	rm -f *.cls *.aux *.log *.glo *.idx *.ilg *.gls *.out *.ind
