@@ -1,10 +1,10 @@
 %%
-%% This is file `ExampleLetter.tex',
+%% This is file `EsampioLettera.tex',
 %% generated with the docstrip utility.
 %%
 %% The original source files were:
 %%
-%% TOPletter.dtx  (with options: `sampleEn')
+%% TOPletter.dtx  (with options: `sampleIt')
 %% 
 %% This is a generated file.
 %% 
@@ -17,33 +17,30 @@
 %% 
 %%     http://choosealicense.com/licenses/apache-2.0/
 %% 
-\documentclass[english]{TOPletter}
-%% Load any additional package
+\documentclass{TOPletter}
+%% Carica package necessari
 \usepackage{lipsum}
 
-\IfLanguageName{italian}{ %% italian names
-  \dipartimentoDi{Disegno e Animazione}
-  \ruolo{Produttore}
-}{%% english names
-  \dipartimentoDi{Comics and Cartoons}
-  \ruolo{Producer}
-}
+%% dipartimento
+\dipartimentoDi{Disegno e Animazione}
 
-%% personal details
+%% dettagli personali
+\ruolo{Fumettista }
 \nome{Walt DISNEY}
 \telefono{+1 555 123 4567}
 \email{walt.disney@polito.it}
 \homepage{http://www.polito.it/wdisney/}
-
+\firma{Walt_Disney_1942_signature.pdf}
 %% Subject
-\soggetto{Sample letter}
+\soggetto{Esempio di lettera}
 
 \begin{document}
 %% Letter content
-This is the typical appearance of a PoliTo letter.
+Questo è l'aspetto di una lettera PoliTo...
 
 \lipsum
+
 \end{document}
 \endinput
 %%
-%% End of file `ExampleLetter.tex'.
+%% End of file `EsampioLettera.tex'.
