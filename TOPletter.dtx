@@ -182,7 +182,7 @@
 % 
 % \noindent\DescribeMacro{\esoggetto}
 % |\esoggetto|\marg{label}
-% changes the word that precedes the subject topic, replaces the defauult "{\em Subject:}", .
+% changes the word that precedes the subject topic, replaces the default "{\em Subject:}".
 %
 % \subsection{Logo}
 % 
@@ -194,7 +194,7 @@
 %
 % \subsection{Language}
 % The document language can be specified as either |italian| or |english|
-% as class parameter e.g. as |\documentclass[italian]{TOPletterA}|.
+% as class parameter e.g. as |\documentclass[italian]{TOPletter}|.
 % The default language is |italian|.
 %
 % The language can be detected using the |\IfLanguageName| macro to adapt the
@@ -361,7 +361,7 @@ tel:\toplTelefono{} \ifdefined\toplFax\hspace{4pt} fax:\toplFax\fi} \\
 \IfLanguageName{italian}{
 	\newcommand{\toplTipoStruttura}{Dipartimento di }
 	\newcommand{\toplDest}{A chi di competenza}
-	\newcommand{\toplSubjectLabel}{Subject}
+	\newcommand{\toplSubjectLabel}{Oggetto}
 }{
 	\newcommand{\toplTipoStruttura}{Department of }
 	\newcommand{\toplDest}{To whom it may concern}
@@ -462,4 +462,65 @@ almeno 400x400 pixel.
 %</class>
 % \fi
 % \Finale
+% \iffalse
+%<*sampleIt>
+% \fi
+\documentclass{TOPletter}
+%% Carica package necessari
+\usepackage{lipsum}
+
+%% dipartimento
+\dipartimentoDi{Disegno e Animazione}
+
+%% dettagli personali
+\ruolo{Fumettista }
+\nome{Walt DISNEY}
+\telefono{+1 555 123 4567}
+\email{walt.disney@polito.it}
+\homepage{http://www.polito.it/wdisney/}
+\firma{Walt_Disney_1942_signature.pdf}
+%% Subject
+\soggetto{Esempio di lettera}
+
+\begin{document}
+%% Letter content
+Questo è l'aspetto di una lettera PoliTo...
+
+\lipsum
+
+\end{document}
+% \iffalse
+%</sampleIt>
+%<*sampleEn>
+% \fi
+\documentclass[english]{TOPletter}
+%% Load any additional package
+\usepackage{lipsum}
+
+\IfLanguageName{italian}{ %% italian names
+  \dipartimentoDi{Disegno e Animazione}
+  \ruolo{Produttore}
+}{%% english names
+  \dipartimentoDi{Comics and Cartoons}
+  \ruolo{Producer}
+}
+
+%% personal details
+\nome{Walt DISNEY}
+\telefono{+1 555 123 4567}
+\email{walt.disney@polito.it}
+\homepage{http://www.polito.it/wdisney/}
+
+%% Subject
+\soggetto{Sample letter}
+
+\begin{document}
+%% Letter content
+This is the typical appearance of a PoliTo letter.
+
+\lipsum
+\end{document}
+% \iffalse
+%</sampleEn>
+% \fi
 \endinput
