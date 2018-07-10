@@ -1,5 +1,5 @@
 #TOPletter class 
-##version 0.2.1 of 2015/03/13  
+##version 0.3.0 of 2018/07/10  
 Copyright 2015 Marco Torchiano  
 Apache License 2.0 
 
