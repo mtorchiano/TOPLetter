@@ -12,7 +12,8 @@ DEPLOYED=*.pdf *.dtx *.ins *.tex LICENSE README.md
 RELFILE=TOPletter_$(VERSION)_$(TS).zip
 
 docs: TOPletter.dtx
-	pdflatex TOPletter.dtx
+	pdflatex '\UseRawInputEncoding \input{TOPletter.dtx}'
+#	pdflatex TOPletter.dtx
 	makeindex -s gglo.ist -o TOPletter.gls TOPletter.glo
 	makeindex -s gind.ist -o TOPletter.ind TOPletter.idx
 	pdflatex TOPletter.dtx

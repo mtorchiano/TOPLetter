@@ -19,7 +19,7 @@
 %<class>\NeedsTeXFormat{LaTeX2e}
 %<class>\ProvidesClass{TOPletter}
 %<*class>
-    [2015/03/13 v0.2.1 Corporate Letter PoliTo LaTeX class]
+    [2018/07/10 v0.3.0 Corporate Letter PoliTo LaTeX class]
 %</class>
 %
 %<*driver>
@@ -183,6 +183,10 @@
 % \noindent\DescribeMacro{\esoggetto}
 % |\esoggetto|\marg{label}
 % changes the word that precedes the subject topic, replaces the default "{\em Subject:}".
+%
+% \noindent\DescribeMacro{\protocollo}
+% |\protocollo|\marg{label}
+% define a protol number if empty, only the ``{\em Prot:}'' will appear at top left.
 %
 % \subsection{Logo}
 % 
@@ -386,6 +390,7 @@ tel:\toplTelefono{} \ifdefined\toplFax\hspace{4pt} fax:\toplFax\fi} \\
 \newcommand{\logo}[1]{\def\toplLogo{#1}}
 \newcommand{\luogo}[1]{\def\toplLuogo{#1}}
 \newcommand{\data}[1]{\def\toplData{#1}}
+\newcommand{\protocollo}[1]{\def\toplProtocollo{#1}}
 \def\toplLogo{LogoPolitoBlu.pdf}
 \def\toplLuogo{Torino}
 \def\toplData{\today}
@@ -427,6 +432,10 @@ almeno 400x400 pixel.
 % \subsection{Begin of the letter}
 % The initial part of the letter includes the recipient of  the letter
 %    \begin{macrocode}
+\ifdefined\toplProtocollo
+Prot. \toplProtocollo
+\vspace{1cm}
+\fi
 \begin{adjustwidth}{10cm}{}
 	\toplDest
 \end{adjustwidth}
@@ -481,10 +490,10 @@ almeno 400x400 pixel.
 \firma{Walt_Disney_1942_signature.pdf}
 %% Subject
 \soggetto{Esempio di lettera}
-
+\protocollo{}
 \begin{document}
 %% Letter content
-Questo è l'aspetto di una lettera PoliTo...
+Ecco l'aspetto di una lettera PoliTo...
 
 \lipsum
 
