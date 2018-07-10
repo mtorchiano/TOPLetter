@@ -1,4 +1,5 @@
-#TOPletter class 
+TOPletter class
+================
 _version 0.3.0 of 2018/07/10_
 
 Copyright 2015 Marco Torchiano  
