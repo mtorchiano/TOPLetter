@@ -1,20 +1,21 @@
 TOPletter class
 ================
-_version 0.3.0 of 2018/07/10_
+_version 0.4.0 of 2024/09/11_
 
-Copyright 2015 Marco Torchiano  
+Copyright 2015-2024 Marco Torchiano  
+
 Apache License 2.0 
 
-The TOPletter bundle contains everything is needed for typesetting a letter using LaTeX and conforming to the official [Corporate Image](http://www.politocomunica.polito.it/corporate_image/marchio_e_identita_visiva) guidelines for [Politecnico di Torino](http://www.polito.it). The template can be used for letter both in Italian and English.
+The TOPletter bundle contains everything is needed for typesetting a letter using LaTeX and conforming to the official [Corporate Image](https://www.polito.it/en/polito/about-us/corporate-image) guidelines for [Politecnico di Torino](http://www.polito.it). The template can be used for letter both in Italian and English.
 
 To understand how you can write an official letter, [here](https://github.com/mtorchiano/TOPLetter/blob/master/EsempioLettera.tex) is the source for the letter and [here](https://github.com/mtorchiano/TOPLetter/raw/master/EsempioLettera.pdf) you can see the result.
 
 Installation
 ------------
 
-Currently *TOPletter* is not yet on [CTAN](https://ctan.org/).
+*TOPletter* is on [CTAN](https://ctan.org/tex-archive/macros/latex/contrib/topletter).
 
-You can download the [local release](https://github.com/mtorchiano/TOPLetter/releases/tag/v0.3.0local), expand the contents in one of your folder and start drafting your corporate letters.
+Alternatively you can download the [local release](https://github.com/mtorchiano/TOPLetter/releases/tag/v0.4.0local), expand the contents in one of your folder and start drafting your corporate letters.
 
 You can start with the sample letters provided in the release.
 
@@ -23,14 +24,15 @@ Usage
 
 The usage of the document class is extremely straightforward:
 
-* the *TOPletteré document class must be declared as the base for the document.
+* the *TOPletter* document class must be declared as the base for the document.
 
-    i.e. using `\documentclass{TOPletterA}`.
+    i.e. using `\documentclass{TOPletter}`.
 
 * the customization macros must be used to define the details of the letter,
 
     i.e. organization details, personal information, and letter subject.
-* the body of the letter can be written as a regular *LATEX* document.
+
+* the body of the letter can be written as a regular *LaTeX* document.
 
 
 ### Organizational Unit
@@ -87,7 +89,8 @@ Example
 
 Here is a very basic example of a short template used for writing a bilingual letter.
 
-```{latex}\documentclass[english]{TOPletter}
+```{latex}
+\documentclass[english]{TOPletter}
 %% Load any additional package
 \usepackage{lipsum}
 \IfLanguageName{italian}{ %% italian names

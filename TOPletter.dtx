@@ -1,7 +1,7 @@
 % \iffalse meta-comment
 %
-%  Copyright (C) 2015 by Marco Torchiano <marco.torchiano@polito.it>
-% ------------------------------------------------------------------
+%  Copyright (C) 2015-2024 by Marco Torchiano <marco.torchiano@polito.it>
+% -----------------------------------------------------------------------
 % 
 % This file may be distributed and/or modified under the conditions of
 % the Apache License, either version 2.0 of this license
@@ -19,7 +19,7 @@
 %<class>\NeedsTeXFormat{LaTeX2e}
 %<class>\ProvidesClass{TOPletter}
 %<*class>
-    [2018/07/10 v0.3.0 Corporate Letter PoliTo LaTeX class]
+    [2024/09/12 v0.4.0 Corporate Letter PoliTo LaTeX class]
 %</class>
 %
 %<*driver>
@@ -60,6 +60,7 @@
 % \changes{v0.2}{2015/03/13}{Initial version}
 % \changes{v0.2.1}{2015/03/13}{Minor changes and fixes to examples}
 % \changes{v0.3.0}{2018/07/10}{Added possibility to add protocol number}
+% \changes{v0.4.0}{2024/09/12}{Minor fixes + changed PolitTo logo}
 %
 % \GetFileInfo{TOPletter.dtx}
 %
@@ -87,11 +88,12 @@
 %
 % \section{Introduction}
 %
-% The \textsf{TOPletter} class provides the basic functions needed for typesetting 
-% a letter using LaTeX and conforming to the official Corporate Image guidelines for
-% Politecnico di Torino~\footnote{
-% \url{http://www.politocomunica.polito.it/corporate_image/marchio_e_identita_visiva}}. 
-% The class can be used for letters written both in Italian and in English languages.
+% The \textsf{TOPletter} class provides the basic functions needed for 
+% typesetting a letter using LaTeX and conforming to the official Corporate 
+% Image guidelines for Politecnico di Torino~\footnote{
+% \url{https://www.polito.it/en/polito/about-us/corporate-image}}. 
+% The class can be used for letters written both in Italian and in English 
+% languages.
 %
 %
 %
@@ -143,8 +145,7 @@
 % |\email|\marg{email}
 % defines the email address of the person
 % 
-% The above information is mandatory and an error is reported
-% if any is missing.
+% The above information is mandatory and an error is reportedif any is missing.
 %
 % \noindent\DescribeMacro{\homepage}
 % |\homepage|\marg{url}
@@ -156,14 +157,16 @@
 % 
 % \noindent\DescribeMacro{\firma}
 % |\firma|\marg{image file}
-% defines an image file (typically a PNG) that contains a scanned signature of the person.
+% defines an image file (typically a PNG) that contains a scanned signature of 
+% the person.
 %
 % \subsection{Letter Details}
 % 
 % \noindent\DescribeMacro{\soggetto}
 % |\soggetto|\marg{subject}
 % defines the subject of the letter, that will appear, at the top of the letter
-% preceded by the word "{\em Subject:}" (or "{\em Soggetto:}" if the language is italian).
+% preceded by the word "{\em Subject:}" (or "{\em Soggetto:}" if the language is 
+% Italian).
 %
 % The above macro is the only mandatory for the letter details.
 %
@@ -171,7 +174,7 @@
 % |\destinatario|\marg{recipient}
 % defines the recipient of the letter, if no recipient is provided the 
 % letter will be addressed to "{\em To whom it may concern}"
-% (or "{\em A chi di competenza}" if the languaga is italian).
+% (or "{\em A chi di competenza}" if the language is Italian).
 % 
 % \noindent\DescribeMacro{\luogo}
 % |\luogo|\marg{place}

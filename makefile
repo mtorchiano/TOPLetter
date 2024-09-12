@@ -1,14 +1,15 @@
+# Makefile for the TOPLetter LaTeX class
 
 default: all
 
-all: docs class examples
+all:examples docs class 
 
-EXAMPLES=EsempioLettera.pdf ExampleLetter.tex
+EXAMPLES=EsempioLettera.pdf ExampleLetter.pdf
 TEMPS=*.aux *.log *.glo *.idx *.ilg *.gls *.out *.ind
 TS=$(shell date +'%Y%m%d%H%M')
 VLINE:=$(shell grep " \[" *.dtx)
 VERSION=$(filter v%,$(VLINE))
-DEPLOYED=TOPletter.pdf Walt_Disney_1942_signature.pdf *.dtx *.ins *.tex LICENSE README.md
+DEPLOYED=*.dtx *.ins *.pdf *.tex LICENSE README.md
 RELFILE=TOPletter_$(VERSION)_$(TS).zip
 
 docs: TOPletter.dtx
@@ -25,6 +26,9 @@ class: TOPletter.ins TOPletter.dtx
 
 examples: EsempioLettera.pdf ExampleLetter.pdf
 
+EsempioLettera.tex: class
+ExampleLetter.tex: class
+
 %.pdf : %.tex
 	pdflatex $<
 	rm -rf $(TEMPS)
@@ -36,4 +40,4 @@ release: docs examples
 	rm -rf topletter
 
 clean:
-	rm -f *.cls *.aux *.log *.glo *.idx *.ilg *.gls *.out *.ind
+	rm -f *.cls *.aux *.log *.glo *.idx *.ilg *.gls *.out *.ind *.tex $(EXAMPLES)
